@@ -1,3 +1,4 @@
+lade.php
 @extends('layouts.default')
 <style>
   th {
@@ -20,20 +21,48 @@
     color: white;
   }
 </style>
+{{-- add.blade.phpというタイトルを表示する --}}
 @section('title', 'add.blade.php')
 
 @section('content')
+@if (count($errors) > 0)
+<p>入力に問題があります</p>
+@endif
 <form action="/add" method="post">
   <table>
   @csrf
+    @if ($errors->has('name'))
+    <tr>
+        <th style="background-color: red">ERROR</th>
+        <td>
+            {{$errors->first('name')}}
+        </td>
+    </tr>
+    @endif
     <tr>
       <th>name</th>
       <td><input type="text" name="name"></td>
     </tr>
+    @if ($errors->has('age'))
+    <tr>
+        <th style="background-color: red">ERROR</th>
+        <td>
+            {{$errors->first('age')}}
+        </td>
+    </tr>
+    @endif
     <tr>
       <th>age</th>
       <td><input type="text" name="age"></td>
     </tr>
+    @if ($errors->has('nationality'))
+    <tr>
+        <th style="background-color: red">ERROR</th>
+        <td>
+            {{$errors->first('nationality')}}
+        </td>
+    </tr>
+    @endif
     <tr>
       <th>nationality</th>
       <td><input type="text" name="nationality"></td>

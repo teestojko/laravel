@@ -14,6 +14,7 @@ td {
   text-align: center;
 }
 </style>
+{{-- binds.blade.phpをタイトルというセクションに挿入する --}}
 @section('title', 'binds.blade.php')
 
 @section('content')
